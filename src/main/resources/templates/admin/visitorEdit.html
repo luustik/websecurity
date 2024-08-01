@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>websecurity.com</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div>
+    <h1>Редактирование посетителя</h1>
+    <div th:each="el: ${visitor}">
+    <form method = "post">
+        <input type="text" th:value="${el.visitorname}" name ="visitorname" placeholder="Введите ФИО посетителя"><br>
+        <a th:text="'Текущая роль:'+${el.role}"/><br>
+        <select id="role" name="role" onchange="toggleInputVisibility()">
+            <option value="Сотрудник">Сотрудник</option>
+            <option value="Инкассация">Инкассация</option>
+            <option value="Посетитель">Посетитель</option>
+        </select>
+        <div id="inputContainer" style="display: none;">
+            <input type="text" th:value="${el.purpose}" name ="purpose" placeholder="Введите цель входа"><br>
+        </div>
+        <p><b>Время входа</b></p>
+        <a><input type="text" th:value="${el.hour}" name ="hour" placeholder="часы">:<input type="text" th:value="${el.minute}" name ="minute" placeholder="минуты"></a><br>
+        <button type="submit">Обновить данные посетителя</button><br>
+    </form>
+    </div>
+</div>
+
+<h4><a href="/admin/showAllVisitors"><button>Отменить редактирование посетителя</button></a></h4>
+
+<script>
+    function toggleInputVisibility() {
+        var selectElement = document.getElementById('role');
+        var inputContainer = document.getElementById('inputContainer');
+
+        if (selectElement.value === 'Посетитель') {
+            inputContainer.style.display = 'block';
+        } else {
+            inputContainer.style.display = 'none';
+        }
+    }
+</script>
+
+</body>
+</html>

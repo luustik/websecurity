@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="websecurity.com"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h4>Все люди, находящиеся в здании:</h4>
+<div th:each="el:${visitors}">
+    <h3 th:text = "${el.visitorname} + ' '  + ${el.hour} +':'+ ${el.minute}"/>
+    <a th:href="'/admin/showAllVisitors/' + ${el.id}">Детальнее</a>
+</div>
+<a href="/admin"><button>Вернуться на панель админа</button></a>
+</body>
+</html>

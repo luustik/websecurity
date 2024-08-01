@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>websecurity.com</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div>
+    <h1>Добавление посетителя</h1>
+    <form action="/admin/addVisitor" method = "post">
+        <input type="text" name ="visitorname" placeholder="Введите ФИО посетителя"><br>
+        <select id="role" name="role" onchange="toggleInputVisibility()">
+            <option value="Сотрудник">Сотрудник</option>
+            <option value="Инкассация">Инкассация</option>
+            <option value="Посетитель">Посетитель</option>
+        </select>
+        <div id="inputContainer" style="display: none;">
+            <input type="text" name ="purpose" placeholder="Введите цель входа"><br>
+        </div>
+        <p><b>Время входа</b></p>
+        <a><input type="text" name ="hour" placeholder="часы">:<input type="text" name ="minute" placeholder="минуты"></a><br>
+        <button type="submit">Добавить посетителя</button><br>
+    </form>
+</div>
+
+<h4><a href="/admin"><button>Отменить добавление посетителя</button></a></h4>
+
+<script>
+    function toggleInputVisibility() {
+        var selectElement = document.getElementById('role');
+        var inputContainer = document.getElementById('inputContainer');
+
+        if (selectElement.value === 'Посетитель') {
+            inputContainer.style.display = 'block';
+        } else {
+            inputContainer.style.display = 'none';
+        }
+    }
+</script>
+
+</body>
+</html>

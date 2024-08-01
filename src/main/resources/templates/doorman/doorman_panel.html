@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="websecurity.com"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h5>WEB-Security_DOORMAN</h5>
+<h4><a href="/show_visitors"><button>Показать людей, находящихся в здании</button></a></h4>
+
+<form action="/show-role" method = "post">
+    <input type="text" name ="role" placeholder="Поиск человека по роли"><br>
+    <button type="submit">Найти</button><br>
+</form>
+<br>
+<form action="/show-name" method = "post">
+    <input type="text" name ="name" placeholder="Поиск человека по имени"><br>
+    <button type="submit">Найти</button><br>
+</form>
+
+<h4><a href="/logout"><button>Выйти</button></a></h4>
+</body>
+</html>
